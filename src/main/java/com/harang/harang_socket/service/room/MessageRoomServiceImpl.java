@@ -16,10 +16,12 @@ public class MessageRoomServiceImpl implements MessageRoomService{
     @Override
     public void createMessageRoom(Integer userId) {
         String roomId = UUID.randomUUID().toString();
-        MessageRoom.builder()
-                .roomId(roomId)
-                .userId(userId)
-                .build();
+        messageRoomRepository.save(
+                MessageRoom.builder()
+                        .roomId(roomId)
+                        .userId(userId)
+                        .build()
+        );
     }
 
 }
